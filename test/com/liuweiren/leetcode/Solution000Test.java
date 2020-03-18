@@ -4,9 +4,9 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
-class Solution001Test {
+class Solution000Test {
 
-    Solution001 solution = new Solution001();
+    Solution000 solution = new Solution000();
 
     @Test
     void twoSum() {

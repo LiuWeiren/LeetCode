@@ -9,7 +9,7 @@ import java.util.HashMap;
  * <br><br>Created by <b>LWR</b> on <b>2020/3/18</b>
  * @author LWR
  */
-public class Solution001 {
+public class Solution000 {
     /**
      * 1.Two Sum(两数之和)
      *
