@@ -128,4 +128,88 @@ public class Solution001 {
 
         return maxLength;
     }
+
+    /**
+     * 7.Reverse Integer(整数反转)
+     *
+     * @param x
+     * @return
+     */
+    public int reverse(int x) {
+        /*
+         * 借用long来处理溢出情况
+         */
+        // if (x == Integer.MIN_VALUE) {
+        //     return 0;
+        // }
+        //
+        // boolean isNegative = x < 0;
+        //
+        // x = Math.abs(x);
+        //
+        // long num = 0;
+        //
+        // while (x >= 10) {
+        //     num = num * 10 + x % 10;
+        //     x = x / 10;
+        // }
+        // num = num * 10 + x % 10;
+        //
+        // if (isNegative) {
+        //     num = - num;
+        // }
+        //
+        // if (num > Integer.MAX_VALUE || num < Integer.MIN_VALUE) {
+        //     return 0;
+        // }
+        //
+        // return (int) num;
+
+        long num = 0;
+        while (x != 0) {
+            num = num * 10 + x % 10;
+            x = x / 10;
+        }
+        return (num > Integer.MAX_VALUE || num < Integer.MIN_VALUE) ? 0 : (int) num;
+    }
+
+    /**
+     * 9.Palindrome Number(回文数)
+     *
+     * @param x
+     * @return
+     */
+    public boolean isPalindrome(int x) {
+        // if (x < 0) { return false; }
+        //
+        // int[] per = new int[10];
+        // int realLen = 0;
+        // while (x != 0) {
+        //     per[realLen] = x % 10;
+        //     x /= 10;
+        //
+        //     if (x != 0) {
+        //         realLen++;
+        //     }
+        // }
+        //
+        // for (int i = 0, halfLen = (int) Math.ceil((realLen + 1) / 2); i < halfLen; i++) {
+        //     if (per[i] != per[realLen - i]) {
+        //         return false;
+        //     }
+        // }
+        //
+        // return true;
+
+
+        if (x < 0 || x % 10 == 0 && x != 0) { return false; }
+
+        int perNum = 0;
+        while (x > perNum) {
+            perNum = perNum * 10 + x % 10;
+            x /= 10;
+        }
+
+        return x == perNum || x == perNum / 10;
+    }
 }
