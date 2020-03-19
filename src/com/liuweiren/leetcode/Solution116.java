@@ -71,18 +71,25 @@ public class Solution116 {
         // }
 
         int wordsLength = 0;
-
+        /*
+         * 统计字母表中各字母的个数
+         */
         int[] charsArr =  new int[26];
         for (int i = 0, charLen = chars.length(); i < charLen; i++) {
             charsArr[chars.charAt(i) - 'a']++;
         }
 
         for (String word : words) {
+            /*
+             * 统计单词中各字母的个数
+             */
             int[] wordArr = new int[26];
             for (int i = 0, wordLen = word.length(); i < wordLen; i++) {
                 wordArr[word.charAt(i) - 'a']++;
             }
-
+            /*
+             * 比较单词和字母表中单词个数,单词中某字母个数超过字母表中的,不成立
+             */
             boolean isComplete = true;
             for (int i = 0, arrLen = wordArr.length; i < arrLen; i++) {
                 if (wordArr[i] > charsArr[i]) {

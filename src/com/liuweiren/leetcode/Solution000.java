@@ -18,7 +18,9 @@ public class Solution000 {
      * @return
      */
     public int[] twoSum(int[] nums, int target) {
-
+        // /*
+        //  * 暴力循环法
+        //  */
         // for (int i = 0; i < nums.length; i++) {
         //     for (int j = i + 1; j < nums.length; j++) {
         //         if (nums[j] == target - nums[i]) {
@@ -30,6 +32,7 @@ public class Solution000 {
         // return new int[] {};
 
         int length = nums.length;
+        // 值, 下标
         HashMap<Integer, Integer> map = new HashMap<>(length, 1);
 
         for (int i = 0; i < length; i++) {
@@ -168,7 +171,7 @@ public class Solution000 {
         long num = 0;
         while (x != 0) {
             num = num * 10 + x % 10;
-            x = x / 10;
+            x /= 10;
         }
         return (num > Integer.MAX_VALUE || num < Integer.MIN_VALUE) ? 0 : (int) num;
     }
@@ -201,15 +204,17 @@ public class Solution000 {
         //
         // return true;
 
-
+        // 小于0、以0为结尾的不是回文数
         if (x < 0 || x % 10 == 0 && x != 0) { return false; }
-
+        /*
+         * 低位整数反转，截取整数位数的一半
+         */
         int perNum = 0;
         while (x > perNum) {
             perNum = perNum * 10 + x % 10;
             x /= 10;
         }
-
+        // 原整数位数为偶数、整数位数为奇数（奇数位不影响回文数）则模10再比较
         return x == perNum || x == perNum / 10;
     }
 }
