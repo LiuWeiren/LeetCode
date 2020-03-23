@@ -178,7 +178,6 @@ public class Solution000 {
 
     /**
      * <a href="https://leetcode-cn.com/problems/string-to-integer-atoi">8.<a/>
-     *
      * String to Integer(atoi)(字符串转换整数 (atoi))
      *
      * 请你来实现一个 atoi 函数，使其能将字符串转换成整数。
@@ -193,8 +192,8 @@ public class Solution000 {
      * 在任何情况下，若函数不能进行有效的转换时，请返回 0。
      *
      * 说明：
-     *      假设我们的环境只能存储 32 位大小的有符号整数，那么其数值范围为 [−231,  231 − 1]。
-     *      如果数值超过这个范围，请返回  INT_MAX (231 − 1) 或 INT_MIN (−231) 。
+     *      假设我们的环境只能存储 32 位大小的有符号整数，那么其数值范围为 [−2^31,  2^31 − 1]。
+     *      如果数值超过这个范围，请返回  INT_MAX (2^31 − 1) 或 INT_MIN (−2^31) 。
      *
      * 示例 1:
      *      输入: "42"
@@ -227,21 +226,80 @@ public class Solution000 {
      * @return
      */
     public int myAtoi(String str) {
-        if (str == null || str.trim().length() == 0) {
+        if (str == null) {
             return 0;
         }
 
         char[] chars = str.toCharArray();
+        int strLen = chars.length;
+        int index = 0;
+        /*
+         * 跳过前面的空格
+         */
+        while (index < strLen) {
+            if (chars[index] != ' ') {
+                break;
+            }
 
-        if (chars[0] != '+' && chars[0] != '-' && !(chars[0] >= '0' && chars[0] <= '9' )) {
+            index++;
+        }
+        /*
+         * 若全部为空格，则返回0
+         */
+        if (index == strLen) {
             return 0;
         }
+        /*
+         * 判断第一个非空字符，并确定整数的符号
+         */
+        boolean isNegative;
+        if (chars[index] == '+' || chars[index] >= '0' && chars[index] <= '9') {
+            isNegative = false;
+            if (chars[index] == '+') {
+                index++;
+            }
+        } else if (chars[index] == '-') {
+            isNegative = true;
+            if (chars[index] == '-') {
+                index++;
+            }
+        } else {
+            return 0;
+        }
+        /*
+         * 因为是32位环境，故不转为long，而是用int类型判断
+         */
+        int num = 0;
+        // 避免前n位乘以10以后越界，无法判断
+        int max = Integer.MAX_VALUE / 10;
+        int maxMod = Integer.MAX_VALUE % 10;
+        int minMod = Integer.MIN_VALUE % 10 * -1;
+        for (int i = index; i < strLen; i++) {
+            /*
+             * 遇到非数字字符，结束循环
+             */
+            if (!(chars[i] >= '0' && chars[i] <= '9')) {
+                break;
+            }
+            /*
+             * 当当前数大于max时，再添加一位必然越界
+             * 当当前数等于max时，如果个位大于minMod、maxMod（取决于是正数还是负数），再加一位必然越界
+             */
+            if (num > max ||
+                    num == max && (isNegative && chars[i] - '0' > minMod
+                            || !isNegative && chars[i] - '0' > maxMod)) {
+                num = isNegative ? Integer.MIN_VALUE : Integer.MAX_VALUE;
+                break;
+            }
 
+            num = num * 10 + (chars[i] - '0');
+        }
 
+        if (num !=  Integer.MIN_VALUE) {
+            num = isNegative ? -num : num;
+        }
 
-
-
-        return 0;
+        return num;
     }
 
     /**

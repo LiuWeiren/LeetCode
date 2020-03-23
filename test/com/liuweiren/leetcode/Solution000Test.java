@@ -48,6 +48,28 @@ class Solution000Test {
     }
 
     @Test
+    void myAtoi() {
+        // System.out.println(Integer.MAX_VALUE);
+        // System.out.println(Integer.MAX_VALUE / 10);
+        //
+        // System.out.println(Integer.MIN_VALUE);
+        // System.out.println(Integer.MIN_VALUE / 10);
+
+        String[] strings = {
+                "42",
+                "  -42",
+                "4193 with words",
+                "words and 987",
+                "-91283472332",
+                "91283472332"
+        };
+
+        for (String s: strings) {
+            System.out.println(s + ", " + solution.myAtoi(s));
+        }
+    }
+
+    @Test
     void isPalindrome() {
         int x = 121;
         int y = 123;
