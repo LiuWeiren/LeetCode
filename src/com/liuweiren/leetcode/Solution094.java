@@ -14,8 +14,8 @@ public class Solution094 {
      * <a href="https://leetcode-cn.com/problems/minimum-increment-to-make-array-unique/">945.<a/>
      * Minimum Increment to Make Array Unique(使数组唯一的最小增量)
      *
-     * 给定整数数组 A，每次 move 操作将会选择任意 A[i]，并将其递增 1。
-     * 返回使 A 中的每个值都是唯一的最少操作次数。
+     * 给定整数数组 A，每次 move 操作将会选择任意 A[i]，并将其递增 1。
+     * 返回使 A 中的每个值都是唯一的最少操作次数。
      *
      * 示例 1:
      *      输入：[1,2,2]

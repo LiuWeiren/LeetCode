@@ -69,8 +69,8 @@ public class Solution099 {
      *
      * 提示：
      *      board.length == board[i].length == 8
-     *      board[i][j] 可以是 'R'，'.'，'B' 或 'p'
-     *      只有一个格子上存在 board[i][j] == 'R'
+     *      board[i][j] 可以是 'R'，'.'，'B' 或 'p'
+     *      只有一个格子上存在 board[i][j] == 'R'
      *
      * @param board
      * @return
