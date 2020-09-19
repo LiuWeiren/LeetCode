@@ -23,7 +23,6 @@ class Solution003Test {
         }
 
     }
-
     private static class KeyAndArray {
         private int key;
         private int[] array;
@@ -47,6 +46,13 @@ class Solution003Test {
 
         public void setArray(int[] array) {
             this.array = array;
+        }
+    }
+
+    @Test
+    void countAndSay() {
+        for (int i = 1; i <= 30; i++) {
+            System.out.println(solution.countAndSay(i));
         }
     }
 }
